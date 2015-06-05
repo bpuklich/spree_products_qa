@@ -13,3 +13,7 @@ nbproject
 pkg
 *.swp
 spec/dummy
+.generators
+.ruby-gemset
+.ruby-version
+spree_products_qa.iml
