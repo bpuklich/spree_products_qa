@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_products_qa'
-  s.version     = '0.0.1'
+  s.version     = '3.0.0'
   s.summary     = 'Spree extension that adds Q&A support for products'
   s.description = 'Each product can have separate Q&A section. Registered users can ask a question, that admins answer.'
   s.required_ruby_version = '>= 1.9.3'
@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3.0'
-  s.add_dependency 'spree_backend', '~> 2.3.0'
+  s.add_dependency 'spree_core', '~> 3.0.0'
+  s.add_dependency 'spree_backend', '~> 3.0.0'
   s.add_dependency 'sidekiq'
 
   s.add_development_dependency 'capybara'

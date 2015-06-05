@@ -1,10 +1,9 @@
 <% content_for :page_title do %>
   <%= t(:products_with_pending_questions) %>
 <% end %>
-<%= render partial: 'spree/admin/shared/product_sub_menu' %>
 
 <% if @collection.any? %>
-  <table class="index" id="listing_products">
+  <table class="table" id="listing_products">
     <colgroup>
       <col style="width: 80%;"/>
       <col style="width: 20%;"/>

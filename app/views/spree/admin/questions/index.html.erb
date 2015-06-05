@@ -1,16 +1,17 @@
-<%= content_for :page_actions do %>
-  <li>
-    <%= button_link_to t(:new_question), new_admin_product_question_url(@product), { icon: 'icon-plus', id: 'admin_new_question' } %>
-  </li>
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Question) %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/product_sub_menu' %>
+<% content_for :page_actions do %>
+  <span id="new_qa_link">
+    <%= button_link_to Spree.t(:new_question), new_admin_product_question_url(@product), { class: 'btn-success', icon: 'add', id: 'admin_new_question' } %>
+  </span>
+<% end %>
+
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('questions_and_answers') } %>
 
-<%= paginate @collection %>
-
 <% if @collection.any? %>
-  <table class="index" id="listing_questions">
+  <table class="table" id="listing_questions">
     <colgroup>
       <col style="width: 80%;"/>
       <col style="width: 20%;"/>
@@ -53,11 +54,11 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
 <% else %>
   <div class="alpha twelve columns no-objects-found">
     <%= Spree.t(:no_resource_found, resource: Spree::Question.model_name.human) %>,
     <%= link_to Spree.t(:add_one), new_admin_product_question_url %>!
   </div>
 <% end %>
-
-<%= paginate @collection %>

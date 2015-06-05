@@ -1,11 +1,18 @@
-<%= content_for :page_actions do %>
-  <li>
-    <%= button_link_to t(:back_to_questions_list), admin_product_questions_url(@product, @question), { icon: 'icon-arrow-left', id: 'admin_new_question' } %>
-  </li>
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_resource, resource: Spree::Question.model_name.human) %>
+  <% if @question.user.present? %>
+    <span class="green"> from <%= @question.user.email %></span>
+  <% end %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/product_sub_menu' %>
+<% content_for :page_actions do %>
+  <% if can?(:create, Spree::Question) %>
+    <%= button_link_to t(:back_to_questions_list), admin_product_questions_url(@product), { class: 'btn-success', icon: 'arrow-left', id: 'admin_new_question' } %>
+  <% end %>
+<% end %>
+
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('questions_and_answers') } %>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @question } %>
 
 <%= form_for [:admin, @product, @question], method: :put, html: { multipart: true } do |f| %>
   <fieldset class="no-border-top">
