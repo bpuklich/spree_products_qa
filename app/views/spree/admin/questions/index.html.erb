@@ -18,7 +18,7 @@
     </colgroup>
     <thead>
       <tr data-hook="admin_product_questions_index_headers">
-        <th><%= t('questions_and_answers') %></th>
+        <th><%= Spree.t('questions_and_answers') %></th>
         <th data-hook="admin_product_questions_index_header_actions" class="actions"></th>
       </tr>
     </thead>
@@ -35,14 +35,14 @@
               <% if question.answer.present? %>
                 <%= question.answer.content %>
               <% else %>
-                <span class="no_answer"><%= t('question.no_answer') %></span>
+                <span class="no_answer"><%= Spree.t('question.no_answer') %></span>
               <% end %>
             </p>
             <small>
               <% if question.user.present? %>
-                <%= t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
+                <%= Spree.t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
               <% end %>
-              <%= t('question.is_visible') %> - <%= question.is_visible %>
+              <%= Spree.t('question.is_visible') %> - <%= question.is_visible %>
             </small>
           </td>
           <td class="actions" data-hook="admin_product_questions_index_row_actions">

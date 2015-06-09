@@ -1,11 +1,8 @@
 <%= form_for @product.questions.new, method: :post do |f| %>
   <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.field_container :content do %>
-    <%= f.label :content, raw(Spree::Question.model_name.human + content_tag(:span, ' *', class: 'required')) %>
-    <br>
-    <%= f.text_area :content, { rows: "4", cols: "50" } %>
-    <%= f.error_message_on :content %>
-  <% end %>
-  <br>
-  <%= f.submit t(:ask_question) %>
+  <p class="form-group">
+      <%= f.label :content, Spree.t(:new_question) %><span class="required">*</span><br />
+      <%= f.text_area :content, class: 'form-control required', rows: "4", cols: "40" %>
+  </p>
+  <%= f.button Spree.t(:ask_question), class: 'btn btn-info' %>
 <% end %>

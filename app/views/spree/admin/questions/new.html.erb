@@ -5,10 +5,10 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to t(:back_to_questions_list), admin_product_questions_url(@product), { class: 'btn-success', icon: 'arrow-left', id: 'back_to_list' } %>
+  <%= button_link_to Spree.t(:back_to_questions_list), admin_product_questions_url(@product), { class: 'btn-success', icon: 'arrow-left', id: 'back_to_list' } %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('questions_and_answers') } %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: Spree.t('questions_and_answers') } %>
 
 <%= form_for [:admin, @product, @question], method: :post, html: { multipart: true } do |f| %>
   <fieldset class="no-border-top">

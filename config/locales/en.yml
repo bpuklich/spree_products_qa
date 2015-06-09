@@ -2,20 +2,21 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  questions_and_answers: 'Questions & Answers'
-  new_question: 'New question'
-  back_to_questions_list: 'Back to questions list'
-  ask_question: 'Ask a question'
-  do_you_have_any_questions: 'Do you have any questions?'
-  products_with_pending_questions: 'Products with pending questions'
-  no_pending_questions: "There's no pending questions"
-  go_to_questions: "Go to questions"
-  question:
-    content: 'Content'
-    asked_by: 'Asked by'
-    is_visible: 'Visible in front'
-    no_answer: "There's no answer yet"
-    sent: 'Question sent, we will answer it soon!'
-  answer_email:
-    subject: 'Your question has been answered'
-    your_question: 'Your question:'
+  spree:
+    questions_and_answers: 'Questions & Answers'
+    new_question: 'New question'
+    back_to_questions_list: 'Back to questions list'
+    ask_question: 'Ask a question'
+    do_you_have_any_questions: 'Do you have any questions?'
+    products_with_pending_questions: 'Products with pending questions'
+    no_pending_questions: "There's no pending questions"
+    go_to_questions: "Go to questions"
+    question:
+      content: 'Content'
+      asked_by: 'Asked by'
+      is_visible: 'Visible in front'
+      no_answer: "There's no answer yet"
+      sent: 'Question sent, we will answer it soon!'
+    answer_email:
+      subject: 'Your question has been answered'
+      your_question: 'Your question:'

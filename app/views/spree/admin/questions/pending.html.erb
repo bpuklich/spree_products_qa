@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= t(:products_with_pending_questions) %>
+  <%= Spree.t(:products_with_pending_questions) %>
 <% end %>
 
 <% if @collection.any? %>
@@ -21,7 +21,7 @@
             <%= link_to product.name, edit_admin_product_path(product) %>
           </td>
           <td class="actions" data-hook="admin_products_pending_questions_index_row_actions">
-            <%= link_to t(:go_to_questions), admin_product_questions_path(product) %>
+            <%= link_to Spree.t(:go_to_questions), admin_product_questions_path(product) %>
           </td>
         </tr>
       <% end %>
@@ -29,6 +29,6 @@
   </table>
 <% else %>
   <div class="alpha twelve columns no-objects-found">
-    <%= t(:no_pending_questions) %>
+    <%= Spree.t(:no_pending_questions) %>
   </div>
 <% end %>

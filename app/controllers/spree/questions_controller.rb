@@ -5,7 +5,7 @@ class Spree::QuestionsController < Spree::StoreController
     question = @product.questions.new(allowed_params)
     question.user_id = current_spree_user.id
     if question.save
-      flash[:notice] = t('question.sent')
+      flash[:notice] = Spree.t(:'question.sent')
       redirect_to @product
     else
       flash[:error] = question.errors.full_messages.to_sentence
