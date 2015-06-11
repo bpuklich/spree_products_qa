@@ -9,7 +9,7 @@ en:
     ask_question: 'Ask a question'
     do_you_have_any_questions: 'Do you have any questions?'
     products_with_pending_questions: 'Products with pending questions'
-    no_pending_questions: "There's no pending questions"
+    no_pending_questions: "There are no pending questions"
     go_to_questions: "Go to questions"
     question:
       content: 'Content'
