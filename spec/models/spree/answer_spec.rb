@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Answer do
+describe Spree::Answer, type: :model do
   describe '#send_email' do
     let(:answer) { build(:answer, question: create(:question)) }
 

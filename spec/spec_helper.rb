@@ -23,14 +23,21 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/url_helpers'
+require 'spree/testing_support/capybara_ext'
+require 'spree/testing_support/preferences'
+require 'spree/testing_support/flash'
+require 'spree/testing_support/order_walkthrough'
+require 'spree/testing_support/caching'
 
 # Requires factories defined in lib/spree_products_qa/factories.rb
 require 'spree_products_qa/factories'
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
+  config.include Spree::TestingSupport::Preferences
 
   # == URL Helpers
   #

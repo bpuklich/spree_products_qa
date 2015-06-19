@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::QaMailerWorker do
+describe Spree::QaMailerWorker, type: :worker do
   describe '#perform', sidekiq: :inline do
     let!(:store)   { create(:store) }
     let(:question) { create(:question_with_answer) }
