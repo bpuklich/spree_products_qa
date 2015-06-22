@@ -9,7 +9,7 @@
     <% end %>
   </div>
 <% end %>
-<% if spree_current_user.present? %>
+<% if (SpreeProductsQa.require_login && spree_current_user.present?) || !SpreeProductsQa.require_login %>
   <div class="row">
     <h6 class="product-section-title"><%= Spree.t(:do_you_have_any_questions) %></h6>
     <div class='question_form'>

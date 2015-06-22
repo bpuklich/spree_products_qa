@@ -6,6 +6,12 @@ module SpreeProductsQa
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    # initializer "spree.products_qa.preferences", :after => "spree.environment" do |app|
+    #   module Spree::ProductsQa
+    #     Config = Spree::ProductsQaConfiguration.new
+    #   end
+    # end
+
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec

@@ -10,6 +10,7 @@ module Spree
     scope :answered, ->{ joins(:answer) }
     scope :not_answered, ->{ where.not(id: self.answered.pluck(:id)) }
 
+    validates :email, presence: true
     validates :content, presence: true
 
     def answer_for_form

@@ -4,7 +4,10 @@ module Spree
 
     def create
       question = @product.questions.new(allowed_params)
-      question.user_id = current_spree_user.id
+      if current_spree_user.present?
+        question.email = current_spree_user.email # discard form input value
+        question.user_id = current_spree_user.id
+      end
       if question.save
         flash[:notice] = Spree.t(:'question.sent')
         redirect_to @product
@@ -20,7 +23,7 @@ module Spree
     end
 
     def allowed_params
-      params.require(:question).permit(:content, :product_id)
+      params.require(:question).permit(:email, :content, :product_id)
     end
   end
 end

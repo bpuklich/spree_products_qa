@@ -15,10 +15,10 @@ describe Spree::QaMailerWorker, type: :worker do
       end
 
       context 'without a user' do
-        it 'will not deliver an email' do
+        it 'will still deliver an email' do
           expect {
             subject.perform(question.id)
-          }.to_not change(ActionMailer::Base.deliveries, :size)
+          }.to change(ActionMailer::Base.deliveries, :size)
         end
       end
     end

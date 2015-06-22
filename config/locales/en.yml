@@ -7,6 +7,7 @@ en:
     new_question: 'New question'
     back_to_questions_list: 'Back to questions list'
     ask_question: 'Ask a question'
+    enter_your_question: 'Enter your question here'
     do_you_have_any_questions: 'Do you have any questions?'
     products_with_pending_questions: 'Products with pending questions'
     no_pending_questions: "There are no pending questions"

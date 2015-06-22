@@ -1,8 +1,23 @@
 <%= form_for @product.questions.new, method: :post do |f| %>
   <%= f.hidden_field :product_id, value: @product.id %>
-  <p class="form-group">
-      <%= f.label :content, Spree.t(:new_question) %><span class="required">*</span><br />
-      <%= f.text_area :content, class: 'form-control required', rows: "4", cols: "40" %>
-  </p>
+  <% if !SpreeProductsQa.require_login %>
+    <div class="form-group">
+      <% if !spree_current_user.present? %>
+        <%= f.label :email do %>
+          <%= Spree.t(:email) %><span class="required">*</span>
+        <% end %>
+        <%= f.email_field :email, class: 'form-control required', placeholder: Spree.t(:email) %>
+      <% else %>
+        <%= f.label :email, Spree.t(:email) %>
+        <%= f.email_field :email, class: 'form-control', value: spree_current_user.email, readonly: true %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :content do %>
+      <%= Spree.t(:new_question) %><span class="required">*</span>
+    <% end %>
+    <%= f.text_area :content, class: 'form-control required', rows: "4", placeholder: Spree.t(:enter_your_question) %>
+  </div>
   <%= f.button Spree.t(:ask_question), class: 'btn btn-info' %>
 <% end %>

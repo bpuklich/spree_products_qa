@@ -39,8 +39,11 @@
               <% end %>
             </p>
             <small>
+              <%= Spree.t('question.asked_by') %>
               <% if question.user.present? %>
-                <%= Spree.t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
+                <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
+              <% else %>
+                <%= question.email %>
               <% end %>
               <%= Spree.t('question.is_visible') %> - <%= question.is_visible %>
             </small>

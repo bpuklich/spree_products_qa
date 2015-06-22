@@ -2,6 +2,9 @@ module SpreeProductsQa
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
+      argument :file_name, :type => :string, :desc => 'rails app_path', :default => '.'
+      source_root File.expand_path('../../templates', __FILE__)
+
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
       def add_javascripts
@@ -12,6 +15,10 @@ module SpreeProductsQa
       def add_stylesheets
         inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/frontend/spree_products_qa\n", :before => /\*\//, :verbose => true
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/spree_products_qa\n", :before => /\*\//, :verbose => true
+      end
+
+      def copy_initializer_file
+        template 'spree_products_qa.rb', "#{file_name}/config/initializers/spree_products_qa.rb"
       end
 
       def add_migrations
