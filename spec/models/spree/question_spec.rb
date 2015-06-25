@@ -3,13 +3,6 @@ require 'spec_helper'
 describe Spree::Question, type: :model do
   subject { build_stubbed(:question) }
   context "scopes" do
-    before :each do
-      reset_spree_preferences do |config|
-        config.enable_mail_delivery = true
-      end
-      allow_any_instance_of(Spree::BaseMailer).to receive(:from_address).and_return("spree@example.com")
-    end
-
     let!(:question_with_answer){ create(:question_with_answer) }
     let!(:question_without_answer){ create(:question) }
 

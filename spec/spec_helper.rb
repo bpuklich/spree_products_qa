@@ -72,6 +72,10 @@ RSpec.configure do |config|
   config.before :each do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
+    reset_spree_preferences do |config|
+      config.enable_mail_delivery = true
+    end
+    allow_any_instance_of(Spree::BaseMailer).to receive(:from_address).and_return("spree@example.com")
   end
 
   # After each spec clean the database.
