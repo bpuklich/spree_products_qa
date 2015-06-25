@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td>
+      <p class="lede">
+        Your question about the following product has been answered!
+      </p>
+      <p>
+        <%= link_to @question.product.name, spree.product_url(@question.product) %>
+      </p>
+      <p>
+        <%= Spree.t('answer_email.your_question')%>
+      </p>
+      <p>
+        <%= @question.content %>
+      </p>
+      <p>
+        Here's our answer:
+      </p>
+      <p>
+        <%= @question.answer.content %>
+      </p>
+    </td>
+  </tr>
+</table>

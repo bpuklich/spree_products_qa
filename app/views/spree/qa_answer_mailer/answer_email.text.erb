@@ -1,7 +1,16 @@
+Your question about the following product has been answered!
+
 <%= @question.product.name %>
 <%= spree.product_url(@question.product) %>
 
+============================================================
+
 <%= Spree.t('answer_email.your_question')%>
+
 <%= @question.content %>
+
+============================================================
+
+Here's our answer:
 
 <%= @question.answer.content %>
