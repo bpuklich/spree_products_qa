@@ -1,3 +1,6 @@
+<%= @question.product.name %>
+<%= spree.product_url(@question.product) %>
+
 <%= Spree.t('answer_email.your_question')%>
 <%= @question.content %>
 

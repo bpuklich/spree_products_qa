@@ -75,6 +75,7 @@ RSpec.configure do |config|
     reset_spree_preferences do |config|
       config.enable_mail_delivery = true
     end
+    ActionMailer::Base.default_url_options[:host] = 'example.com'
     allow_any_instance_of(Spree::BaseMailer).to receive(:from_address).and_return("spree@example.com")
   end
 
