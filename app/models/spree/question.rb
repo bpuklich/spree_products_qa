@@ -13,8 +13,14 @@ module Spree
     validates :email, presence: true
     validates :content, presence: true
 
+    after_create :send_email
+
     def answer_for_form
       self.answer.present? ? self.answer : self.build_answer
+    end
+
+    def send_email
+      Spree::QaQuestionMailer.question_email(self).deliver_later
     end
   end
 end

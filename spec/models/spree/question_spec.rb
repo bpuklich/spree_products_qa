@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe Spree::Question, type: :model do
+  describe 'sends email' do
+
+    it 'should email a copy of the new question' do
+      question = build(:question)
+      expect {
+        question.save
+      }.to change(ActionMailer::Base.deliveries, :size).by(1)
+    end
+  end
+
   subject { build_stubbed(:question) }
   context "scopes" do
     let!(:question_with_answer){ create(:question_with_answer) }
