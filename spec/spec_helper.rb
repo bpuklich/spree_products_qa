@@ -15,9 +15,6 @@ require 'ffaker'
 # in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
-# Allows Sidekiq to be configured for testing
-require 'sidekiq/testing'
-
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
 require 'spree/testing_support/controller_requests'
@@ -75,17 +72,6 @@ RSpec.configure do |config|
   config.before :each do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
-
-    Sidekiq::Worker.clear_all
-    if example.metadata[:sidekiq] == :fake
-      Sidekiq::Testing.fake!
-    elsif example.metadata[:sidekiq] == :inline
-      Sidekiq::Testing.inline!
-    elsif example.metadata[:type] == :acceptance
-      Sidekiq::Testing.inline!
-    else
-      Sidekiq::Testing.fake!
-    end
   end
 
   # After each spec clean the database.

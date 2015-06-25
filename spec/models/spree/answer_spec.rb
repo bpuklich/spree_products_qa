@@ -4,22 +4,14 @@ describe Spree::Answer, type: :model do
   describe '#send_email' do
     let(:answer) { build(:answer, question: create(:question)) }
 
-    # it 'should not queue the question' do
-    #   expect {
-    #     answer.save
-    #   }.to_not change(Spree::QaMailerWorker.jobs, :size)
-    # end
-
-    # context 'with send_email enabled' do
-    #   before(:each) do
-    #     allow(SpreeProductsQa).to receive(:send_email?).and_return(true)
-    #   end
-
-      it 'should queue the question' do
-        expect {
-          answer.save
-        }.to change(Spree::QaMailerWorker.jobs, :size).by(1)
+    it 'should email the answer' do
+      reset_spree_preferences do |config|
+        config.enable_mail_delivery = true
       end
-    # end
+      allow_any_instance_of(Spree::BaseMailer).to receive(:from_address).and_return("spree@example.com")
+      expect {
+        answer.save
+      }.to change(ActionMailer::Base.deliveries, :size).by(1)
+    end
   end
 end
