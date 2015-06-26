@@ -1,6 +1,6 @@
 module Spree
   class Question < Spree::Base
-    belongs_to :product
+    belongs_to :product, touch: true
     has_one :answer, dependent: :destroy
     belongs_to :user
     accepts_nested_attributes_for :answer

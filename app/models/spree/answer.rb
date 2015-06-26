@@ -1,6 +1,6 @@
 module Spree
   class Answer < Spree::Base
-    belongs_to :question, required: true
+    belongs_to :question, required: true, touch: true
 
     validates :content, presence: true
 
